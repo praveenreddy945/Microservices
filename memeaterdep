@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memeater-deployment
+  labels:
+    app: memeater
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memeater
+  template:
+    metadata:
+      labels:
+        app: memeater
+    spec:
+      containers:
+      - name: memeater
+        image: sumanth7/memeater
+        ports:
+        - containerPort: 8888
+        env:
+        - name: JAVA_OPTS
+          value: -Xmx200m -Xms100m

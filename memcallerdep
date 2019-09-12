@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memcaller-deployment
+  labels:
+    app: memcaller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memcaller
+  template:
+    metadata:
+      labels:
+        app: memcaller
+    spec:
+      containers:
+      - name: memcaller
+        image: sumanth7/memcaller
+        ports:
+        - containerPort: 8889
+        env:
+        - name: SERVICE1_DNS
+          value: "10.233.59.163"
+        - name: SERVICE1_PORT
+          value: "8888"

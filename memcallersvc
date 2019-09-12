@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: memcaller
+
+spec:
+  type: NodePort
+  ports:
+  - port: 8889
+    targetPort: 8889
+  selector:
+    app: memcaller
